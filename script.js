@@ -1,16 +1,16 @@
-// 1. Find the elements
+// SELECTING THE ELEMENTS
 const heading = document.getElementById('mainHeading');
-const button = document.getElementById('changeTextBtn');
+const vibeBtn = document.getElementById('changeTextBtn');
+const fireBtn = document.getElementById('fireButton');
 
-// 2. Listen for the click
-button.addEventListener('click', function() {
-    
-    // 3. Change the heading text
+// LOGIC FOR THE "CHANGE THE VIBE" BUTTON
+vibeBtn.addEventListener('click', function() {
     heading.innerText = "A Quiet Night Under the Stars";
-    
-    // 4. Update the button text too
-    button.innerText = "Vibe Changed! ✨";
-    
-    // 5. Change the color of the heading as a bonus
+    vibeBtn.innerText = "Vibe Changed! ✨";
     heading.style.color = "#f1c40f"; 
+});
+
+// LOGIC FOR THE "LIGHT THE FIRE" BUTTON
+fireBtn.addEventListener('click', function() {
+    alert("🔥 The campfire is crackling! Stay cozy, traveler.");
 });
