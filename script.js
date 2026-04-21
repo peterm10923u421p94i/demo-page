@@ -1,44 +1,51 @@
+"use strict"; // Prevents common coding mistakes
+
 // --- SELECT ALL ELEMENTS ---
-const heading = document.getElementById('mainHeading');
-const vibeBtn = document.getElementById('changeTextBtn');
-const fireBtn = document.getElementById('fireButton');
-const inputField = document.getElementById('userInput');
-const postBtn = document.getElementById('displayBtn');
-const displayArea = document.getElementById('storyDisplay');
+const elements = {
+    heading: document.getElementById('mainHeading'),
+    vibeBtn: document.getElementById('changeTextBtn'),
+    fireBtn: document.getElementById('fireButton'),
+    inputField: document.getElementById('userInput'),
+    postBtn: document.getElementById('displayBtn'),
+    displayArea: document.getElementById('storyDisplay'),
+    genBtn: document.getElementById('generatorBtn'),
+    genResult: document.getElementById('gameResult')
+};
 
-// NEW Generator Elements
-const genBtn = document.getElementById('generatorBtn');
-const genResult = document.getElementById('gameResult');
-
-// --- 1. LIGHT THE FIRE ALERT ---
-fireBtn.addEventListener('click', function() {
+// --- 1. LIGHT THE FIRE ---
+elements.fireBtn.addEventListener('click', () => {
     alert("🔥 The campfire is crackling! Stay cozy, traveler.");
 });
 
 // --- 2. CHANGE THE VIBE ---
-vibeBtn.addEventListener('click', function() {
-    heading.innerText = "A Quiet Night Under the Stars";
-    vibeBtn.innerText = "Vibe Changed! ✨";
-    heading.style.color = "#f1c40f"; 
+elements.vibeBtn.addEventListener('click', () => {
+    elements.heading.innerText = "A Quiet Night Under the Stars";
+    elements.vibeBtn.innerText = "Vibe Changed! ✨";
+    elements.heading.style.color = "#f1c40f"; 
 });
 
-// --- 3. INPUT LOGIC (IF/ELSE) ---
-postBtn.addEventListener('click', function() {
-    const message = inputField.value.toLowerCase().trim();
+// --- 3. STORY INPUT WITH IMPROVED LOGIC ---
+elements.postBtn.addEventListener('click', () => {
+    const rawValue = elements.inputField.value;
+    const cleanValue = rawValue.toLowerCase().trim();
 
-    if (message === "") {
-        displayArea.innerText = "The woods are quiet... try typing a story first!";
-    } else if (message === "marshmallow") {
-        displayArea.innerText = "Yum! Don't forget the graham crackers and chocolate. 🍫";
+    // Using an if/else tree for responses
+    if (!cleanValue) {
+        elements.displayArea.innerText = "The woods are quiet... try typing a story first!";
+        elements.displayArea.style.color = "#e74c3c";
+    } else if (cleanValue === "marshmallow") {
+        elements.displayArea.innerText = "Yum! Don't forget the graham crackers. 🍫";
+        elements.displayArea.style.color = "#f1c40f";
     } else {
-        displayArea.innerText = "“" + inputField.value + "”";
+        // Using a Template Literal (Backticks) for cleaner code
+        elements.displayArea.innerText = `“${rawValue}”`;
+        elements.displayArea.style.color = "#f1c40f";
     }
-    inputField.value = ""; 
+    elements.inputField.value = ""; 
 });
 
-// --- 4. RANDOM GAME GENERATOR ---
-genBtn.addEventListener('click', function() {
-    // This is our list (Array) of choices
+// --- 4. ENHANCED RANDOM GENERATOR ---
+const pickRandomGame = () => {
     const games = [
         "Rocket League 🏎️", 
         "Minecraft 🧱", 
@@ -47,13 +54,8 @@ genBtn.addEventListener('click', function() {
         "Actually... just take a nap 😴"
     ];
 
-    // Math.random() picks a decimal between 0 and 1
-    // Math.floor() rounds it down to a whole number (0, 1, 2, 3, or 4)
     const randomIndex = Math.floor(Math.random() * games.length);
-    
-    // Pick the game at that random position
-    const selectedGame = games[randomIndex];
+    elements.genResult.innerText = `You should play: ${games[randomIndex]}`;
+};
 
-    // Display it on the page
-    genResult.innerText = "You should play: " + selectedGame;
-});
+elements.genBtn.addEventListener('click', pickRandomGame);
