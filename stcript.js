@@ -1,7 +1,16 @@
-// This tells the browser to find the button
-const campfireButton = document.getElementById('fireButton');
+// 1. Find the elements
+const heading = document.getElementById('mainHeading');
+const button = document.getElementById('changeTextBtn');
 
-// This tells the browser what to do when it's clicked
-campfireButton.addEventListener('click', function() {
-    alert("🔥 The campfire is crackling! Stay cozy, traveler.");
+// 2. Listen for the click
+button.addEventListener('click', function() {
+    
+    // 3. Change the heading text
+    heading.innerText = "A Quiet Night Under the Stars";
+    
+    // 4. Update the button text too
+    button.innerText = "Vibe Changed! ✨";
+    
+    // 5. Change the color of the heading as a bonus
+    heading.style.color = "#f1c40f"; 
 });
