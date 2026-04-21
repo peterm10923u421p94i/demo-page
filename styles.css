@@ -1,19 +1,10 @@
-/* 1. This "imports" the Lora font from Google */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
-
-/* MOUNTAIN CAMPFIRE STYLES */
 
 body {
     background-color: #1a1a1d; 
-    /* 2. We apply Lora here. 'serif' is the backup if Google is slow */
     font-family: 'Lora', serif;
     color: #dcdde1; 
-    
-    /* 3. 'Easy on the eyes' means more space between lines */
     line-height: 1.9; 
-    /* 4. A tiny bit of space between letters makes it feel 'airy' */
-    letter-spacing: 0.5px;
-    
     margin: 0;
     padding: 40px;
     display: flex;
@@ -25,17 +16,14 @@ body {
     max-width: 700px;
     background: #2d3436; 
     padding: 40px;
-    border-radius: 20px; /* More rounded = more flowy */
+    border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.7);
     border: 1px solid #353b48;
+    text-align: center;
 }
 
 h1, h2, h3 {
     color: #e67e22; 
-    text-align: center;
-    font-weight: 700;
-    /* Headings look great with a little extra space */
-    letter-spacing: 1px;
 }
 
 .section {
@@ -44,30 +32,17 @@ h1, h2, h3 {
     border-bottom: 1px solid #3f444d;
 }
 
-p {
-    font-size: 19px; /* Slightly larger is easier to read */
-    margin-bottom: 25px;
-}
-
-/* Image styling with softer edges */
 .profile-img, .sub-img {
     width: 100%;
-    max-width: 500px;
-    height: auto;
     border-radius: 15px;
     margin: 25px auto;
-    display: block;
     filter: sepia(15%) contrast(1.1);
 }
 
-/* Custom pine tree bullets */
 ul {
     list-style-type: '🌲 ';
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 12px;
+    text-align: left;
+    display: inline-block;
 }
 
 .btn {
@@ -76,14 +51,17 @@ li {
     color: white;
     padding: 14px 30px;
     text-decoration: none;
-    border-radius: 50px; /* Perfectly round 'pill' shape */
-    transition: all 0.3s ease;
-    margin-top: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+    font-size: 16px;
     font-weight: bold;
+    margin: 10px;
+    transition: 0.3s;
 }
 
 .btn:hover {
     background-color: #e67e22;
-    transform: translateY(-3px); /* Button 'floats' up when hovered */
-    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+    transform: translateY(-3px);
 }
